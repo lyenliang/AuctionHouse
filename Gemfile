@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "aasm"
+
 gem "carrierwave"
 
 gem "mini_magick"
