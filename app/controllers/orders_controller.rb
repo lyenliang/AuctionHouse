@@ -13,11 +13,19 @@ class OrdersController < ApplicationController
     end
   end
 
-    def show
-        @order = Order.find_by_token(params[:id])
-        @order_info = @order.info
-        @order_items = @order.items
-    end
+  def show
+    @order = Order.find_by_token(params[:id])
+    @order_info = @order.info
+    @order_items = @order.items
+  end
+
+  def pay_with_credit_card
+    @order = Order.find_by_token(params[:id])
+    @order.set_payment_with!("credit_card")
+    @order.pay!
+    
+    redirect_to order_path(@order.token), notice: "成功完成付款"
+  end
 
   private
 
