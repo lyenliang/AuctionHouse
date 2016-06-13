@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'products#index'
 
+  resources :carts
+
   resources :products do
     member do
       post :add_to_cart
