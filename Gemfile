@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem "aasm"
 
+gem "roadie", "2.4.3"
+
 gem "carrierwave"
 
 gem "mini_magick"
@@ -50,6 +52,9 @@ group :development, :test do
 end
 
 group :development do
+  
+  gem "letter_opener", group: :development
+  
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
