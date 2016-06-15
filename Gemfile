@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "fog"
+
 gem "aasm"
 
 gem "roadie", "2.4.3"
