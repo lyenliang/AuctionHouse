@@ -1,3 +1,76 @@
+
+<!-- Header Section Ends -->
+<!-- Slider Section Starts -->
+	<div class="slider">
+		<div class="container">
+			<div id="main-carousel" class="carousel slide" data-ride="carousel">
+				<!-- Wrapper For Slides Starts -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<%= image_tag("banner1.jpg", alt: "banners", class: "img-responsive" ) %>
+						</div>
+						<div class="item">
+							<%= image_tag("banner2.jpg", alt: "banners", class: "img-responsive" ) %>
+						</div>
+						<div class="item">
+							<%= image_tag("banner3.jpg", alt: "banners", class: "img-responsive" ) %>
+						</div>
+					</div>
+				<!-- Wrapper For Slides Ends -->
+				<!-- Controls Starts -->
+					<a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				<!-- Controls Ends -->
+			</div>
+		</div>
+	</div>
+
+  <section class="products-list">
+		<div class="container">
+		<!-- Heading Starts -->
+			<h2 class="product-head">熱賣商品</h2>
+			<div class="row">
+				<% @products.each do |p| %>
+					<div class="col-md-3 col-sm-6">
+						<div class="product-col">
+							<div class="image">
+								<!-- <img src="images/product-images/5.jpg" alt="product" class="img-responsive" /> -->
+	              <%= link_to product_path(p) do %>
+	                <%= image_tag(p.photo.image.thumb.url, class: "thumbnail") %>
+	              <% end %>
+							</div>
+							<div class="caption">
+								<h4>
+	                <%= link_to(p.title ,product_path(p)) %>
+								</h4>
+								<div class="description">
+									<%= p.description %>
+								</div>
+								<div class="price">
+									
+									<span class="price-old">$<%= p.price %></span>
+								</div>
+								<div class="cart-button button-group">
+	                <% if p.quantity > 0 %>
+	                  <%= button_to add_to_cart_product_path(p), :class => "btn btn-cart", :method=> :post do %>
+											Add to cart<i class="fa fa-shopping-cart"></i>
+										<% end %>
+	                <% else %>
+	                  <p>已售完,補貨中</p>
+	                <% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</section>  
+<!--	
 <div class="row">
   <% @products.each do |product| %>
     <div class="col-xs-6 col-md-3">
@@ -12,3 +85,4 @@
     </div>
   <% end %>
 </div>
+-->
