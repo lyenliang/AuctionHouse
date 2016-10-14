@@ -43,7 +43,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-right">
 						<div class="cart box_1">
 							<a href="checkout.html">
-								<h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)<img src="images/bag.png" alt=""></h3>
+								<h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+								<%= image_tag("bag.png") %>
+								</h3>
 							</a>	
 							<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
 							<div class="clearfix"> </div>
@@ -289,7 +291,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"></div>
 					</div>
 					<div class="purchase">
-						<a href="#">Purchase Now</a>
+						<% if @product.quantity > 0 %>
+              <%= link_to("加入購物車", add_to_cart_product_path(@product), method: :post) %>
+            <% else %>
+              賣完了，不給你買
+            <% end %>
 						<div class="social-icons">
 							<ul>
 								<li><a class="facebook1" href="#"></a></li>
@@ -567,7 +573,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 		  </div>
 		  <div class="cards text-center">
-				<img src="images/cards.jpg" alt="" />
+		    <%= image_tag("cards.jpg") %>
 		  </div>
 		  <div class="copyright text-center">
 				<p>© 2015 Eshop. All Rights Reserved | Design by   <a href="http://w3layouts.com">  W3layouts</a></p>
