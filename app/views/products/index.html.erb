@@ -259,7 +259,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
 						<%= link_to product_path(p) do %>
 			            	<% if p.photo.present? %>
-				              <%= image_tag(p.photo.image.thumb.url, class: "thumbnail") %>
+				              <%= image_tag(p.photo.image.thumb.url, class: "") %>
 				            <% else %>
 				              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
 				            <% end %>
@@ -267,9 +267,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            <div class="mask">
 			            	<%= link_to "Quick View", product_path(p) %>
 			            </div>
-			            <%= link_to p.title, product_path(p) %>
+			            <%= link_to p.title, product_path(p), class: "product_name" %>
 			            <p>
-			            	<%= link_to add_to_cart_product_path(p), :class => "item_add", :method=> :post do %>
+			            	<%= link_to add_to_cart_product_path(p), class: "item_add", method: :post do %>
 			            		<i></i> <span class="item_price">$<%= p.price %></span>
 			            	<% end %>
 			            </p>
