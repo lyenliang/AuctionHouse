@@ -3,16 +3,24 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  before_action :init_search
+  
+  helper_method :current_cart
+  
   def admin_required
     if !current_user.admin?
       redirect_to "/"
     end
   end
   
-  helper_method :current_cart
-
   def current_cart
     @current_cart ||= find_cart
+  end
+
+  protected
+  
+  def init_search
+    @q = Product.ransack(params[:q])
   end
 
   private
